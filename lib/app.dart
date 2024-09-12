@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Task',
+          title: 'iGenTech',
           initialRoute: AppRoutes.homeScreenRoute,
           routes: AppRoutes.routes,
         );

@@ -1,5 +1,5 @@
-import 'package:flutter_helper/core/api/api_consumer.dart';
-import 'package:flutter_helper/features/first_feature/data/models/cat_fact_model.dart';
+import 'package:iGenTech/core/api/api_consumer.dart';
+import 'package:iGenTech/features/first_feature/data/models/cat_fact_model.dart';
 
 abstract class FirstFeatureRemoteDataSource {
   Future<CatFactModel> getCatFact();
