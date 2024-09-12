@@ -47,7 +47,7 @@ packages:
     source: hosted
     version: "2.11.0"
   awesome_dialog:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: awesome_dialog
       sha256: "41c41ae4b30b5c7f26bb3d9f9c87010ed1cab0bb4d4ac0cc513e5799c37e9d82"
@@ -595,7 +595,7 @@ packages:
     source: hosted
     version: "3.0.0"
   local_auth:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: local_auth
       sha256: "434d854cf478f17f12ab29a76a02b3067f86a63a6d6c4eb8fbfdcfe4879c1b7b"
