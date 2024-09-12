@@ -1,1 +1,13 @@
-{}
+{
+  "enterYourEmail": "Enter your email",
+  "enterValidEmail": "Please enter a valid email",
+  "enterYourPassword": "Enter your password",
+  "passwordAtLeast6": "Password must be at least 6 characters",
+  "enterPhoneNumber": "Enter your phone number",
+  "nameRequired": "Name is required",
+  "addressRequired": "Address is required",
+  "zipCodeRequired": "Zip code is required",
+  "enterValidZipCode": "Please enter a valid zip code",
+  "specialThanks": "I would like to thank Dr. Omneya, Eng. Hamdallah, and Eng. Raafat for the interview. I sincerely hope to join the team and work in the amazing work environment at iGenTech.😊",
+  "thankYou": "Thank you!"
+}

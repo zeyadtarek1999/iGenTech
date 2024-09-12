@@ -6,6 +6,8 @@ class AppColors {
   static Color mainTextColor = const Color(0xff808080);
   static Color hintColor = const Color(0x966D6D6D);
   static Color error = const Color(0xffcb0505);
+  static Color logoMainColor = const Color(0xff11133C);
+  static Color logoSecColor = const Color(0xff6CC390);
 
   static Color red = const Color(0xffD42A0F);
   static Color green = const Color(0xff39A238);
