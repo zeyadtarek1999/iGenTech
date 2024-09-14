@@ -18,7 +18,7 @@ class OnBoardingScreen extends StatelessWidget {
     return BlocListener<OnBoardingCubit, OnBoardingState>(
       listener: (context, state) {
         if (state is OnBoardingCompleted && state.isCompleted) {
-          Navigator.pushReplacementNamed(context, AppRoutes.signUpScreenRoute);
+          Navigator.pushReplacementNamed(context, AppRoutes.signInScreenRoute);
         }
       },
       child: Scaffold(

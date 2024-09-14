@@ -16,7 +16,7 @@ class SplashScreen extends StatelessWidget {
     return BlocListener<SplashCubit, SplashState>(
       listener: (context, state) {
         if (state is SplashNavigateToHome) {
-          Navigator.pushReplacementNamed(context, AppRoutes.homeScreenRoute);
+          Navigator.pushReplacementNamed(context, AppRoutes.signInScreenRoute);
         } else if (state is SplashNavigateToOnboarding) {
           Navigator.pushReplacementNamed(context, AppRoutes.onBoardingScreenRoute);
         }

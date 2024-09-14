@@ -22,6 +22,7 @@ class CustomTextFormFieldWidget extends StatelessWidget {
     required this.validator,
     this.prefixIcon,
     this.onEditingComplete,
+    this.onTap, // Added onTap parameter
   });
 
   final TextEditingController? controller;
@@ -41,6 +42,7 @@ class CustomTextFormFieldWidget extends StatelessWidget {
   final Color? textColor;
   final void Function(String)? onChange;
   final void Function()? onEditingComplete;
+  final void Function()? onTap; // Added onTap parameter
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +61,9 @@ class CustomTextFormFieldWidget extends StatelessWidget {
           validator: validator,
           cursorColor: AppColors.mainColor,
           onEditingComplete: onEditingComplete,
+          onTap: onTap, // Handling onTap
           style: TextStyle(
-            color: textColor ?? AppColors.mainColor,
+            color: textColor ?? AppColors.black,
             fontSize: 16.sp,
             fontWeight: FontWeight.w500,
           ),
@@ -74,10 +77,6 @@ class CustomTextFormFieldWidget extends StatelessWidget {
             ),
             filled: fillColor != null,
             fillColor: fillColor ?? AppColors.secondColor,
-            contentPadding: EdgeInsets.symmetric(
-              horizontal: 16.w,
-              vertical: 14.h,
-            ),
             border: OutlineInputBorder(
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(12.r),

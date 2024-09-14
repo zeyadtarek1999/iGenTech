@@ -37,16 +37,16 @@ class AppValidator {
     bool hasNoNameOrEmail = !value.contains(RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'));
 
     if (!hasMinLength) {
-      return 'Must be at least 8 characters';
+      return LocaleKeys.password_min_length.tr();
     }
     if (!hasSymbolOrNumber) {
-      return 'Must have at least one symbol or number';
+      return LocaleKeys.password_symbol_or_number.tr();
     }
     if (!hasNoSpaces) {
-      return 'Can’t contain spaces';
+      return LocaleKeys.password_no_spaces.tr();
     }
     if (!hasNoNameOrEmail) {
-      return 'Can’t include your name or email address';
+      return LocaleKeys.password_no_name_or_email.tr();
     }
 
     return null;
@@ -79,6 +79,17 @@ class AppValidator {
     if (!RegExp(r'^\d{5}(-\d{4})?$').hasMatch(zipCode)) {
       return LocaleKeys.enterValidZipCode.tr();
     }
+    return null;
+  }
+
+  static String? birthDateValidation(String? value) {
+    if (value == null || value.isEmpty) {
+      return LocaleKeys.birthDateRequired.tr();
+    }
+
+
+
+
     return null;
   }
 }

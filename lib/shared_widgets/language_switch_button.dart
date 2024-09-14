@@ -43,9 +43,9 @@ class LanguageSwitchButton extends StatelessWidget {
             SizedBox(width: 8.w),
             Text(
               context.locale.languageCode == 'ar' ? 'En' : 'Ar',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+              style:  TextStyle(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w600,
                 color: Colors.black,
               ),
             ),

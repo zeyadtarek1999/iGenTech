@@ -32,6 +32,12 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/arrow_down.svg
+  String get arrowDown => 'assets/icons/arrow_down.svg';
+
+  /// File path: assets/icons/calender.svg
+  String get calender => 'assets/icons/calender.svg';
+
   /// File path: assets/icons/igentech.jpg
   AssetGenImage get igentech =>
       const AssetGenImage('assets/icons/igentech.jpg');
@@ -44,7 +50,8 @@ class $AssetsIconsGen {
   String get language => 'assets/icons/language.svg';
 
   /// List of all assets
-  List<dynamic> get values => [igentech, igentechLogo, language];
+  List<dynamic> get values =>
+      [arrowDown, calender, igentech, igentechLogo, language];
 }
 
 class $AssetsImagesGen {

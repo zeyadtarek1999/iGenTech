@@ -6,9 +6,39 @@ import 'dart:convert';
 
 class SecureCacheHelper {
   final _secureStorage = const FlutterSecureStorage();
-
   final SharedPreferences _sharedPreferences = getIt<SharedPreferences>();
 
+  // Save encrypted user data (list of users)
+  Future<void> saveEncryptedUserList(List<Map<String, dynamic>> users, {required String key}) async {
+    try {
+      // Convert the list of users to JSON string and encode it
+      String jsonUsers = jsonEncode(users);
+      String encryptedData = base64Encode(utf8.encode(jsonUsers));
+
+      // Save the encrypted data in secure storage
+      await _secureStorage.write(key: key, value: encryptedData);
+    } catch (e) {
+      debugPrint('Error saving encrypted user list: $e');
+    }
+  }
+
+  // Get decrypted user data (list of users)
+  Future<List<Map<String, dynamic>>?> getDecryptedUserList({required String key}) async {
+    try {
+      String? encryptedData = await _secureStorage.read(key: key);
+      if (encryptedData != null) {
+        // Decrypt the data and decode it from JSON string
+        String decryptedData = utf8.decode(base64Decode(encryptedData));
+        List<dynamic> decodedJson = jsonDecode(decryptedData);
+
+        // Cast the decoded JSON to a List<Map<String, dynamic>>
+        return decodedJson.map((user) => Map<String, dynamic>.from(user)).toList();
+      }
+    } catch (e) {
+      debugPrint('Error retrieving encrypted user list: $e');
+    }
+    return null;
+  }
   Future<void> saveSecureData({required String key, required String value}) async {
     try {
       await _secureStorage.write(key: key, value: value);

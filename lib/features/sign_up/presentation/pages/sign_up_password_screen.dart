@@ -1,10 +1,18 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:iGenTech/config/routes/app_routes.dart';
+import 'package:iGenTech/core/enum/alert_enum.dart';
+import 'package:iGenTech/core/services/alert_service.dart';
 import 'package:iGenTech/core/utils/app_colors.dart';
 import 'package:iGenTech/core/validations/app_validation.dart';
 import 'package:iGenTech/features/sign_up/presentation/manager/sign_up_cubit.dart';
-import 'package:iGenTech/features/sign_up/presentation/widgets/password_requirement_widget.dart';
+import 'package:iGenTech/features/sign_up/presentation/widgets/already_have_an_account.dart';
+import 'package:iGenTech/shared_widgets/form_field_section.dart';
+import 'package:iGenTech/generated/locale_keys.g.dart';
+import 'package:iGenTech/injection_container.dart';
+import 'package:iGenTech/shared_widgets/buttons/custom_elevator_button.dart';
 import 'package:iGenTech/shared_widgets/custom_app_bar.dart';
 import 'package:iGenTech/shared_widgets/custom_text_form_field.dart';
 
@@ -13,118 +21,120 @@ class SignUpPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignUpCubit, SignUpState>(
+    final formKey = GlobalKey<FormState>();
+
+    return BlocConsumer<SignUpCubit, SignUpState>(
+      listener: (context, state) {
+        if (state is SignUpSubmitted) {
+          Navigator.pushReplacementNamed(context, AppRoutes.homeScreenRoute);
+
+          getIt<AlertService>().showAlert(
+            context: context,
+            title: LocaleKeys.success.tr(),
+            subtitle: LocaleKeys.user_registered_successfully.tr(),
+            status: AlertStatus.success,
+          );
+          debugPrint('Sign Up Completed!');
+        } else if (state is SignUpFormInvalid) {
+          debugPrint('Form validation error');
+        }
+      },
       builder: (context, state) {
+        final cubit = context.read<SignUpCubit>();
+
         return Scaffold(
           backgroundColor: AppColors.bgColor,
           appBar: const CustomAppBar(
-            title: 'Sign up',
+            title: '',
+            showTitle: false,
             showBackButton: true,
           ),
           body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
             child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 20.h),
-                  Text(
-                    'Set a password to complete registration!',
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: AppColors.mainTextColor,
-                      fontWeight: FontWeight.w600,
+              child: Form(
+                key: formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      LocaleKeys.sign_up.tr(),
+                      style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                        fontSize: 40.sp,
+                        color: AppColors.secTextColor,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 20.h),
-                  // Password
-                  CustomTextFormFieldWidget(
-                    hint: 'Set Password',
-                    obscureText: true,
-                    onChange: (value) => context.read<SignUpCubit>().updatePassword(value),
-                    validator: (value) => AppValidator.passwordValidation(value),
-                  ),
-                  SizedBox(height: 20.h),
-                  // Confirm Password
-                  CustomTextFormFieldWidget(
-                    hint: 'Confirm Password',
-                    obscureText: true,
-                    onChange: (value) => context.read<SignUpCubit>().updateConfirmPassword(value),
-                    validator: (value) => context.read<SignUpCubit>().confirmPasswordValidation(value),
-                  ),
-                  SizedBox(height: 20.h),
-                  // Password strength indicators
-                  if (state is SignUpFormUpdated)
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(
-                              state.passwordStrength == 'excellent'
-                                  ? Icons.check_circle
-                                  : Icons.info,
-                              color: state.passwordStrength == 'excellent'
-                                  ? AppColors.mainColor
-                                  : AppColors.error,
-                              size: 18.sp,
-                            ),
-                            SizedBox(width: 8.w),
-                            Text(
-                              'Password strength: ${state.passwordStrength}',
-                              style: TextStyle(
-                                color: AppColors.mainTextColor,
-                                fontSize: 14.sp,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 10.h),
-                        PasswordRequirementWidget(
-                          requirement: 'Must be at least 8 characters',
-                          fulfilled: state.hasMinLength,
-                        ),
-                        PasswordRequirementWidget(
-                          requirement: 'Can’t include your name or email address',
-                          fulfilled: state.hasNoNameOrEmail,
-                        ),
-                        PasswordRequirementWidget(
-                          requirement: 'Must have at least one symbol or number',
-                          fulfilled: state.hasSymbolOrNumber,
-                        ),
-                        PasswordRequirementWidget(
-                          requirement: 'Can’t contain spaces',
-                          fulfilled: state.hasNoSpaces,
-                        ),
-                      ],
+                    SizedBox(height: 20.h),
+                    Text(
+                      LocaleKeys.set_password_prompt.tr(),
+                      style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                        color: AppColors.mainTextColor,
+                        fontWeight: FontWeight.normal,
+                      ),
                     ),
-                  SizedBox(height: 30.h),
-                  // Register Button
-                  SizedBox(
-                    width: double.infinity,
-                    height: 48.h,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        context.read<SignUpCubit>().submitForm();
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(AppColors.mainColor),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(22.r),
+                    SizedBox(height: 20.h),
+
+                    FormFieldSection(
+                      label: LocaleKeys.set_password.tr(),
+                      child: CustomTextFormFieldWidget(
+                        fillColor: AppColors.secondColor,
+                        hint: LocaleKeys.set_password.tr(),
+                        obscureText: !cubit.isPasswordVisible,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            cubit.isPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: AppColors.hintColor,
                           ),
+                          onPressed: cubit.togglePasswordVisibility,
                         ),
-                      ),
-                      child: Text(
-                        'Register',
-                        style: TextStyle(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+                        onChange: (value) {
+                          cubit.updatePassword(value);
+                          formKey.currentState?.validate();
+                        },
+                        validator: (value) => AppValidator.passwordValidation(value),
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(height: 20.h),
+
+                    FormFieldSection(
+                      label: LocaleKeys.confirm_password.tr(),
+                      child: CustomTextFormFieldWidget(
+                        fillColor: AppColors.secondColor,
+                        hint: LocaleKeys.confirm_password.tr(),
+                        obscureText: !cubit.isConfirmPasswordVisible,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            cubit.isConfirmPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: AppColors.hintColor,
+                          ),
+                          onPressed: cubit.toggleConfirmPasswordVisibility,
+                        ),
+                        onChange: (value) {
+                          cubit.updateConfirmPassword(value);
+                          formKey.currentState?.validate();
+                        },
+                        validator: (value) => cubit.password == value
+                            ? null
+                            : LocaleKeys.password_mismatch.tr(),
+                      ),
+                    ),
+                    SizedBox(height: 20.h),
+
+                    CustomElevatedButton(
+                      onPressed: () {
+                        cubit.submitPasswordForm(formKey);
+                      },
+                      label: LocaleKeys.register.tr(),
+                    ),
+                    SizedBox(height: 8.h),
+                    const AlreadyHaveAccountRow(),
+                  ],
+                ),
               ),
             ),
           ),

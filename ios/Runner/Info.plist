@@ -14,6 +14,11 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>iGenTech</string>
+	<key>NSFaceIDUsageDescription</key>
+    <string>We use Face ID to authenticate you and protect your account.</string>
+    <key>NSLocalAuthenticationUsageDescription</key>
+    <string>We use biometrics to authenticate you and protect your account.</string>
+
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -28,6 +33,11 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>We need your location to show relevant content and features.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>We need your location to show relevant content and features, even when the app is running in the background.</string>
+
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
