@@ -1,7 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:iGenTech/features/onBoarding/presentation/manager/onboarding_cubit.dart';
+import 'package:iGenTech/features/sign_up/presentation/manager/sign_up_cubit.dart';
+import 'package:iGenTech/features/splash/presentation/manager/splash_cubit.dart';
 
 import 'app.dart';
 import 'core/observers/bloc_observer.dart';
@@ -18,5 +22,20 @@ void main() async {
       supportedLocales: const [Locale('en'), Locale('ar')],
       path: 'assets/languages',
       fallbackLocale: const Locale('en'),
-      child: const MyApp()));
+      child: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (_) => getIt<SplashCubit>(),
+            ),
+            BlocProvider(
+              create: (_) => getIt<OnBoardingCubit>(),
+            ),
+            BlocProvider(
+              create: (_) => getIt<SignUpCubit>(),
+            ),
+          ],
+        child: const MyApp(),
+      ),
+  ),
+  );
 }

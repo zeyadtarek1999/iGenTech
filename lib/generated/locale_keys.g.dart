@@ -12,5 +12,14 @@ abstract class  LocaleKeys {
   static const enterValidZipCode = 'enterValidZipCode';
   static const specialThanks = 'specialThanks';
   static const thankYou = 'thankYou';
+  static const whoWeAre = 'whoWeAre';
+  static const ourMission = 'ourMission';
+  static const missionSubtitle = 'missionSubtitle';
+  static const ourVision = 'ourVision';
+  static const visionSubtitle = 'visionSubtitle';
+  static const skip = 'skip';
+  static const done = 'done';
+  static const next = 'next';
+  static const whoWeAreSubtitle = 'whoWeAreSubtitle';
 
 }

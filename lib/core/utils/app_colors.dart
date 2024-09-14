@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static Color mainColor = const Color(0xff004F62);
+  static Color mainColor = const Color(0xff6CC390);
+  static Color bgColor = const Color(0xff11133C);
   static Color secondColor = const Color(0xffF1F5FB);
-  static Color mainTextColor = const Color(0xff808080);
+  static Color mainTextColor = const Color(0xff6CC390);
+  static Color secTextColor = const Color(0xffFFFFFF);
+  static Color labelColor = const Color(0xffB5BABF);
   static Color hintColor = const Color(0x966D6D6D);
   static Color error = const Color(0xffcb0505);
   static Color logoMainColor = const Color(0xff11133C);

@@ -7,6 +7,9 @@ import 'package:iGenTech/features/first_feature/domain/repositories/first_featur
 import 'package:iGenTech/features/first_feature/domain/use_cases/first_feature_uc.dart';
 import 'package:iGenTech/features/first_feature/presentation/manager/cat_fact_cubit.dart';
 import 'package:get_it/get_it.dart';
+import 'package:iGenTech/features/onBoarding/presentation/manager/onboarding_cubit.dart';
+import 'package:iGenTech/features/sign_up/presentation/manager/sign_up_cubit.dart';
+import 'package:iGenTech/features/splash/presentation/manager/splash_cubit.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,6 +28,9 @@ Future<void> getItInit() async {
 
   /// Blocs
   getIt.registerFactory<CatFactCubit>(() => CatFactCubit(featureUc: getIt()));
+  getIt.registerFactory<SplashCubit>(() => SplashCubit( getIt()));
+  getIt.registerFactory<OnBoardingCubit>(() => OnBoardingCubit( getIt()));
+  getIt.registerFactory<SignUpCubit>(() => SignUpCubit( ));
 
   /// Use cases
   getIt

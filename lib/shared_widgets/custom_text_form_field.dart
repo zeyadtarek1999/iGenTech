@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../core/utils/app_colors.dart';
 
 class CustomTextFormFieldWidget extends StatelessWidget {
-  const CustomTextFormFieldWidget(
-      {super.key,
-      required this.hint,
-      this.suffixIcon,
-      this.obscureText = false,
-      this.withBorders = false,
-      this.readOnly = false,
-      this.textInputType,
-      this.textInputAction,
-      this.textAlign = TextAlign.start,
-      this.fillColor,
-      this.labelColor,
-      this.hintColor,
-      this.textColor,
-      this.controller,
-      this.onChange,
-      required this.validator,
-      this.prefixIcon,
-      this.onEditingComplete});
+  const CustomTextFormFieldWidget({
+    super.key,
+    required this.hint,
+    this.suffixIcon,
+    this.obscureText = false,
+    this.withBorders = true,
+    this.readOnly = false,
+    this.textInputType,
+    this.textInputAction,
+    this.textAlign = TextAlign.start,
+    this.fillColor,
+    this.labelColor,
+    this.hintColor,
+    this.textColor,
+    this.controller,
+    this.onChange,
+    required this.validator,
+    this.prefixIcon,
+    this.onEditingComplete,
+  });
 
   final TextEditingController? controller;
   final String hint;
@@ -69,45 +69,40 @@ class CustomTextFormFieldWidget extends StatelessWidget {
             prefixIcon: prefixIcon,
             hintText: hint,
             hintStyle: TextStyle(
-              color: hintColor ?? AppColors.mainTextColor,
+              color: hintColor ?? AppColors.hintColor,
+              fontSize: 16.sp,
             ),
             filled: fillColor != null,
-            fillColor: fillColor,
-            contentPadding: EdgeInsets.symmetric(horizontal: 16.w),
-            border: withBorders
-                ? OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: AppColors.mainColor, width: 0.5.w),
-                    borderRadius: BorderRadius.circular(22.r),
-                  )
-                : OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(22.r),
-                  ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: AppColors.mainColor, width: 0.5.w),
-              borderRadius: BorderRadius.circular(22.r),
+            fillColor: fillColor ?? AppColors.secondColor,
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: 16.w,
+              vertical: 14.h,
             ),
-            errorBorder: withBorders
-                ? OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: AppColors.error, width: 0.5.w),
-                    borderRadius: BorderRadius.circular(22.r),
-                  )
-                : OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(22.r),
-                  ),
-            focusedErrorBorder: withBorders
-                ? OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: AppColors.error, width: 0.5.w),
-                    borderRadius: BorderRadius.circular(22.r),
-                  )
-                : OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(22.r),
-                  ),
+            border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(12.r),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: AppColors.mainColor,
+                width: 1.w,
+              ),
+              borderRadius: BorderRadius.circular(12.r),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: AppColors.error,
+                width: 1.w,
+              ),
+              borderRadius: BorderRadius.circular(12.r),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: AppColors.error,
+                width: 1.w,
+              ),
+              borderRadius: BorderRadius.circular(12.r),
+            ),
           ),
         )
       ],

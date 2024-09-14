@@ -30,12 +30,27 @@ class AppValidator {
     if (value == null || value.isEmpty) {
       return LocaleKeys.enterYourPassword.tr();
     }
-    if (value.length < 6) {
-      return LocaleKeys.passwordAtLeast6.tr();
+
+    bool hasMinLength = value.length >= 8;
+    bool hasSymbolOrNumber = value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>0-9]'));
+    bool hasNoSpaces = !value.contains(' ');
+    bool hasNoNameOrEmail = !value.contains(RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'));
+
+    if (!hasMinLength) {
+      return 'Must be at least 8 characters';
     }
+    if (!hasSymbolOrNumber) {
+      return 'Must have at least one symbol or number';
+    }
+    if (!hasNoSpaces) {
+      return 'Can’t contain spaces';
+    }
+    if (!hasNoNameOrEmail) {
+      return 'Can’t include your name or email address';
+    }
+
     return null;
   }
-
   static String? phoneValidation(String? value) {
     if (value == null || value.isEmpty) {
       return LocaleKeys.enterPhoneNumber.tr();

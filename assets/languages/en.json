@@ -9,5 +9,15 @@
   "zipCodeRequired": "Zip code is required",
   "enterValidZipCode": "Please enter a valid zip code",
   "specialThanks": "I would like to thank Dr. Omneya, Eng. Hamdallah, and Eng. Raafat for the interview. I sincerely hope to join the team and work in the amazing work environment at iGenTech.😊",
-  "thankYou": "Thank you!"
+  "thankYou": "Thank you!",
+  "whoWeAre": "Who We Are!",
+  "ourMission": "Our Mission",
+  "missionSubtitle": "Our mission is to significantly impact not only the MENA region but also the global stage. We do this by offering advanced, customer-focused software solutions. We aim to empower individuals and businesses with the digital tools necessary to thrive in a constantly evolving and competitive landscape.",
+  "ourVision": "Our Vision",
+  "visionSubtitle": "Our aspiration is not just to be a provider but the leading and trusted source of digital transformation and innovation in the MENA region and globally.",
+  "skip": "Skip",
+  "done": "Done",
+  "next": "Next",
+  "whoWeAreSubtitle": "Pioneers in Financial Innovation In the heart of Egypt's bustling market, two visionary banking entrepreneurs joined forces with a software entrepreneur to build a passionate engineering team dedicated to crafting top-notch software solutions and payment infrastructure. "
+
 }
