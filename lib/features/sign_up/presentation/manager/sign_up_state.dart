@@ -41,6 +41,15 @@ class SignUpFormInvalid extends SignUpState {
     this.birthDateError,
     this.passwordError,
   });
+
+  @override
+  String toString() {
+    return 'SignUpFormInvalid('
+        'nameError: $nameError, '
+        'emailError: $emailError, '
+        'birthDateError: $birthDateError, '
+        'passwordError: $passwordError)';
+  }
 }
 
 class SignUpEmailAlreadyRegistered extends SignUpState {

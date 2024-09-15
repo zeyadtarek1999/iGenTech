@@ -27,48 +27,48 @@ class SplashScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Logo
               Assets.icons.igentechLogo.image(
                 width: double.infinity,
                 height: 300.h,
                 fit: BoxFit.contain,
               ),
               SizedBox(height: 20.h),
-              // Animated Text
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: 'Disturbing The ',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineLarge!
-                          .copyWith(
-                        fontWeight: FontWeight.w800,
-                        color: AppColors.secTextColor,
+              Center(
+                child: RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Disturbing The ',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineLarge!
+                            .copyWith(
+                          fontWeight: FontWeight.w800,
+                          color: AppColors.secTextColor,
+                        ),
                       ),
-                    ),
-                    TextSpan(
-                      text: 'Fintech',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineLarge!
-                          .copyWith(
-                        fontWeight: FontWeight.w800,
-                        color: AppColors.mainTextColor,
+                      TextSpan(
+                        text: 'Fintech',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineLarge!
+                            .copyWith(
+                          fontWeight: FontWeight.w800,
+                          color: AppColors.mainTextColor,
+                        ),
                       ),
-                    ),
-                    TextSpan(
-                      text: ' Industry...',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineLarge!
-                          .copyWith(
-                        fontWeight: FontWeight.w800,
-                        color: AppColors.secTextColor,
+                      TextSpan(
+                        text: ' Industry...',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineLarge!
+                            .copyWith(
+                          fontWeight: FontWeight.w800,
+                          color: AppColors.secTextColor,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
