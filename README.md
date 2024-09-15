@@ -33,6 +33,16 @@ Biometric Authentication: For added security, users can authenticate with their 
 6. Location-Based Services
    When users register, the app requests location permission and retrieves their current location. This data is stored securely and can be displayed on the profile screen via an interactive map.
 
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////
 ## Generating assets / fonts 
 ```bash
 flutter pub run build_runner build --delete-conflicting-outputs
