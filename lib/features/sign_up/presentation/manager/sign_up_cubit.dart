@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -134,7 +136,14 @@ class SignUpCubit extends Cubit<SignUpState> {
       ));
     }
   }
-
+  bool isSimulator() {
+    if (Platform.isAndroid) {
+      return !Platform.isIOS && !Platform.isAndroid || Platform.environment.containsKey('emulator');
+    } else if (Platform.isIOS) {
+      return Platform.environment.containsKey('simulator');
+    }
+    return false;
+  }
   Future<void> submitPasswordForm(GlobalKey<FormState> formKey) async {
     if (formKey.currentState?.validate() ?? false) {
       if (password != null && password == confirmPassword) {
@@ -168,7 +177,26 @@ class SignUpCubit extends Cubit<SignUpState> {
                     (_) => emit(SignUpSubmitted()),
               );
             } else {
-              emit(SignUpFormInvalid(passwordError: "Unable to retrieve location"));
+              if (isSimulator()) {
+                final user = User(
+                  fullName: fullName!,
+                  email: email!,
+                  gender: gender!,
+                  birthDate: birthDate!,
+                  password: password!,
+                  latitude: 37.7749,
+                  longitude: -122.4194,
+                );
+
+                final Either<Failure, void> result = await signUpUseCase.signUp(user);
+
+                result.fold(
+                      (failure) => emit(SignUpFormInvalid(passwordError: "Error during sign-up: ${failure.massage}")),
+                      (_) => emit(SignUpSubmitted()),
+                );
+              } else {
+                emit(SignUpFormInvalid(passwordError: "Unable to retrieve location"));
+              }
             }
           } else {
             emit(SignUpFormInvalid(passwordError: "Biometric authentication failed"));
