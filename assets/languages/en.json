@@ -61,6 +61,14 @@
   "login_successful": "Login Successful!",
   "login_error": "Login Error",
   "email_already_registered": "This email is already registered",
-  "bio_auth_prompt": "Please authenticate to register"
+  "bio_auth_prompt": "Please authenticate to register",
 
+  "gender": "Gender",
+  "location": "Location",
+  "view_in_map": "View in map",
+  "profile": "Profile",
+  "my_account": "My Account",
+  "log_out": "Log out",
+  "code_design": "Code & Design",
+  "special_thanks": "Special Thanks"
 }

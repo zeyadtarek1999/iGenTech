@@ -61,7 +61,14 @@
   "login_successful": "تم تسجيل الدخول بنجاح!",
   "login_error": "خطأ في تسجيل الدخول",
   "email_already_registered": "هذا البريد الإلكتروني مسجل بالفعل",
-  "bio_auth_prompt": "يرجى التحقق من هويتك للتسجيل"
-
+  "bio_auth_prompt": "يرجى التحقق من هويتك للتسجيل",
+  "gender": "الجنس",
+  "location": "الموقع",
+  "view_in_map": "عرض على الخريطة",
+  "profile": "الملف الشخصي",
+  "my_account": "حسابي",
+  "log_out": "تسجيل الخروج",
+  "code_design": "الرمز والتصميم",
+  "special_thanks": "شكر خاص"
 
 }

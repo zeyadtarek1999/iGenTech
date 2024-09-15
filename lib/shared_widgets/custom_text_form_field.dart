@@ -42,7 +42,7 @@ class CustomTextFormFieldWidget extends StatelessWidget {
   final Color? textColor;
   final void Function(String)? onChange;
   final void Function()? onEditingComplete;
-  final void Function()? onTap; // Added onTap parameter
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {

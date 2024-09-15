@@ -31,6 +31,8 @@ class SignUpLocalDataSourceImpl implements SignUpLocalDataSource {
         'fullName': user.fullName,
         'gender': user.gender,
         'birthDate': user.birthDate,
+        'latitude': user.latitude,  // Added for location
+        'longitude': user.longitude, // Added for location
       });
 
       await secureCacheHelper.saveEncryptedData(
@@ -56,10 +58,10 @@ class SignUpLocalDataSourceImpl implements SignUpLocalDataSource {
       }
 
       List<Map<String, dynamic>> userList =
-          List<Map<String, dynamic>>.from(json.decode(encryptedUserList));
+      List<Map<String, dynamic>>.from(json.decode(encryptedUserList));
 
       final userMap = userList.firstWhere(
-        (user) => user['email'] == email,
+            (user) => user['email'] == email,
       );
 
       debugPrint('User found with email: $email');
@@ -69,8 +71,8 @@ class SignUpLocalDataSourceImpl implements SignUpLocalDataSource {
         fullName: userMap['fullName'],
         gender: userMap['gender'],
         birthDate: userMap['birthDate'],
-        latitude: userMap['latitude'],
-        longitude: userMap['longitude'],
+        latitude: userMap['latitude'],  // Added for location
+        longitude: userMap['longitude'], // Added for location
       );
     } catch (e) {
       debugPrint('Error retrieving user data: $e');

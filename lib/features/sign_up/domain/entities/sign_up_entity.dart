@@ -4,8 +4,8 @@ class User {
   final String gender;
   final String birthDate;
   final String password;
-  final double latitude;  // Added for location
-  final double longitude; // Added for location
+  final double latitude;  
+  final double longitude; 
 
   User({
     required this.fullName,
@@ -13,8 +13,8 @@ class User {
     required this.gender,
     required this.birthDate,
     required this.password,
-    required this.latitude,   // Added for location
-    required this.longitude,  // Added for location
+    required this.latitude,   
+    required this.longitude,  
   });
 
   Map<String, dynamic> toJson() {
@@ -24,8 +24,8 @@ class User {
       'gender': gender,
       'birthDate': birthDate,
       'password': password,
-      'latitude': latitude,  // Added for location
-      'longitude': longitude, // Added for location
+      'latitude': latitude,  
+      'longitude': longitude, 
     };
   }
 
@@ -36,8 +36,8 @@ class User {
       gender: json['gender'],
       birthDate: json['birthDate'],
       password: json['password'],
-      latitude: json['latitude'],  // Added for location
-      longitude: json['longitude'], // Added for location
+      latitude: json['latitude'],  
+      longitude: json['longitude'], 
     );
   }
 }

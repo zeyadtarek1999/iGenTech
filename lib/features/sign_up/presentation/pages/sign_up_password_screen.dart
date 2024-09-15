@@ -26,7 +26,13 @@ class SignUpPasswordScreen extends StatelessWidget {
     return BlocConsumer<SignUpCubit, SignUpState>(
       listener: (context, state) {
         if (state is SignUpSubmitted) {
-          Navigator.pushReplacementNamed(context, AppRoutes.homeScreenRoute);
+          final email = context.read<SignUpCubit>().email;
+
+          Navigator.pushReplacementNamed(
+            context,
+            AppRoutes.profileScreenRoute,
+            arguments: email,
+          );
 
           getIt<AlertService>().showAlert(
             context: context,

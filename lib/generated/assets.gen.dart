@@ -38,6 +38,12 @@ class $AssetsIconsGen {
   /// File path: assets/icons/calender.svg
   String get calender => 'assets/icons/calender.svg';
 
+  /// File path: assets/icons/figma.svg
+  String get figma => 'assets/icons/figma.svg';
+
+  /// File path: assets/icons/github.svg
+  String get github => 'assets/icons/github.svg';
+
   /// File path: assets/icons/igentech.jpg
   AssetGenImage get igentech =>
       const AssetGenImage('assets/icons/igentech.jpg');
@@ -51,7 +57,7 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<dynamic> get values =>
-      [arrowDown, calender, igentech, igentechLogo, language];
+      [arrowDown, calender, figma, github, igentech, igentechLogo, language];
 }
 
 class $AssetsImagesGen {

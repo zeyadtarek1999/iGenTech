@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iGenTech/features/onBoarding/presentation/manager/onboarding_cubit.dart';
+import 'package:iGenTech/features/profile/presentation/manager/profile_cubit.dart';
 import 'package:iGenTech/features/sign_in/presentation/manager/sign_in_cubit.dart';
 import 'package:iGenTech/features/sign_up/presentation/manager/sign_up_cubit.dart';
 import 'package:iGenTech/features/splash/presentation/manager/splash_cubit.dart';
@@ -36,6 +37,9 @@ void main() async {
             ),
             BlocProvider(
               create: (_) => getIt<SignInCubit>(),
+            ),
+            BlocProvider(
+              create: (_) => getIt<ProfileCubit>(),
             ),
           ],
         child: const MyApp(),

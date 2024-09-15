@@ -32,8 +32,12 @@ class SignInScreen extends StatelessWidget {
       body: BlocConsumer<SignInCubit, SignInState>(
         listener: (context, state) {
           if (state is SignInSuccess) {
-            Navigator.pushReplacementNamed(context, AppRoutes.homeScreenRoute);
-            getIt<AlertService>().showAlert(
+            final email = context.read<SignInCubit>().email;
+            Navigator.pushReplacementNamed(
+              context,
+              AppRoutes.profileScreenRoute,
+              arguments: email,
+            );            getIt<AlertService>().showAlert(
               context: context,
               title: LocaleKeys.success.tr(),
               subtitle: LocaleKeys.login_successful.tr(),

@@ -7,4 +7,5 @@ class AppLocalCacheKey {
   static const String gender = 'gender';
   static const String birthDate = 'birthDate';
   static const String usersList = 'users_list';
+  static const String currentUser = 'current_user_profile';
 }

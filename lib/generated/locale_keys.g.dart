@@ -64,5 +64,13 @@ abstract class  LocaleKeys {
   static const login_error = 'login_error';
   static const email_already_registered = 'email_already_registered';
   static const bio_auth_prompt = 'bio_auth_prompt';
+  static const gender = 'gender';
+  static const location = 'location';
+  static const view_in_map = 'view_in_map';
+  static const profile = 'profile';
+  static const my_account = 'my_account';
+  static const log_out = 'log_out';
+  static const code_design = 'code_design';
+  static const special_thanks = 'special_thanks';
 
 }
