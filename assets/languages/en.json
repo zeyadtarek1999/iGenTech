@@ -47,6 +47,7 @@
   "register": "Register",
   "password_strength_excellent": "Excellent",
   "password_strength_good": "Good",
+  "password_strength_fair": "fair",
   "password_strength_weak": "Weak",
   "password_symbol_or_number": "Must have at least one symbol or number",
   "password_no_name_or_email": "Can’t include your name or email address",

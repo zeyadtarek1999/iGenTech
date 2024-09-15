@@ -55,17 +55,33 @@ class SignUpCubit extends Cubit<SignUpState> {
     final emailError = AppValidator.emailValidation(email);
     final birthDateError = AppValidator.birthDateValidation(birthDate);
 
+    bool hasMinLength = password != null && password!.length >= 8;
+    bool hasSymbolOrNumber = password != null && password!.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>0-9]'));
+    bool hasNoSpaces = password != null && !password!.contains(' ');
+    bool hasNoNameOrEmail = password != null && !password!.contains(RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'));
+
+    String passwordStrength = LocaleKeys.password_strength_weak.tr();
+
+    if (hasMinLength && hasSymbolOrNumber && hasNoSpaces && hasNoNameOrEmail) {
+      passwordStrength = LocaleKeys.password_strength_excellent.tr();
+    } else if (hasMinLength && hasSymbolOrNumber) {
+      passwordStrength = LocaleKeys.password_strength_good.tr();
+    } else if (hasMinLength) {
+      passwordStrength = LocaleKeys.password_strength_fair.tr();
+    }
+
     emit(SignUpFormUpdated(
       nameError: nameError,
       emailError: emailError,
       birthDateError: birthDateError,
-      passwordStrength: '',
-      hasMinLength: false,
-      hasNoNameOrEmail: false,
-      hasSymbolOrNumber: false,
-      hasNoSpaces: false,
+      passwordStrength: passwordStrength,
+      hasMinLength: hasMinLength,
+      hasNoNameOrEmail: hasNoNameOrEmail,
+      hasSymbolOrNumber: hasSymbolOrNumber,
+      hasNoSpaces: hasNoSpaces,
     ));
   }
+
 
   void updateFullName(String name) {
     fullName = name;

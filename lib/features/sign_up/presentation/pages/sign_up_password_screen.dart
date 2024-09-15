@@ -3,15 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iGenTech/config/routes/app_routes.dart';
-import 'package:iGenTech/core/enum/alert_enum.dart';
-import 'package:iGenTech/core/services/alert_service.dart';
 import 'package:iGenTech/core/utils/app_colors.dart';
 import 'package:iGenTech/core/validations/app_validation.dart';
 import 'package:iGenTech/features/sign_up/presentation/manager/sign_up_cubit.dart';
 import 'package:iGenTech/features/sign_up/presentation/widgets/already_have_an_account.dart';
+import 'package:iGenTech/features/sign_up/presentation/widgets/password_strength.dart';
 import 'package:iGenTech/shared_widgets/form_field_section.dart';
 import 'package:iGenTech/generated/locale_keys.g.dart';
-import 'package:iGenTech/injection_container.dart';
 import 'package:iGenTech/shared_widgets/buttons/custom_elevator_button.dart';
 import 'package:iGenTech/shared_widgets/custom_app_bar.dart';
 import 'package:iGenTech/shared_widgets/custom_text_form_field.dart';
@@ -77,24 +75,30 @@ class SignUpPasswordScreen extends StatelessWidget {
 
                     FormFieldSection(
                       label: LocaleKeys.set_password.tr(),
-                      child: CustomTextFormFieldWidget(
-                        fillColor: AppColors.secondColor,
-                        hint: LocaleKeys.set_password.tr(),
-                        obscureText: !cubit.isPasswordVisible,
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            cubit.isPasswordVisible
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                            color: AppColors.hintColor,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomTextFormFieldWidget(
+                            fillColor: AppColors.secondColor,
+                            hint: LocaleKeys.set_password.tr(),
+                            obscureText: !cubit.isPasswordVisible,
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                cubit.isPasswordVisible
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: AppColors.hintColor,
+                              ),
+                              onPressed: cubit.togglePasswordVisibility,
+                            ),
+                            onChange: (value) {
+                              cubit.updatePassword(value);
+                              formKey.currentState?.validate();
+                            },
+                            validator: (value) => AppValidator.passwordValidation(value),
                           ),
-                          onPressed: cubit.togglePasswordVisibility,
-                        ),
-                        onChange: (value) {
-                          cubit.updatePassword(value);
-                          formKey.currentState?.validate();
-                        },
-                        validator: (value) => AppValidator.passwordValidation(value),
+                          SizedBox(height: 10.h),
+                        ],
                       ),
                     ),
                     SizedBox(height: 20.h),
@@ -123,6 +127,8 @@ class SignUpPasswordScreen extends StatelessWidget {
                             : LocaleKeys.password_mismatch.tr(),
                       ),
                     ),
+                    SizedBox(height: 20.h),
+                    PasswordStrengthIndicator(password: cubit.password),
                     SizedBox(height: 20.h),
 
                     CustomElevatedButton(

@@ -85,5 +85,6 @@ abstract class  LocaleKeys {
   static const log_out = 'log_out';
   static const code_design = 'code_design';
   static const special_thanks = 'special_thanks';
+  static const password_strength_fair = 'password_strength_fair';
 
 }
