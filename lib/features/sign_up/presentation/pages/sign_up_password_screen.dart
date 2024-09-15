@@ -34,12 +34,6 @@ class SignUpPasswordScreen extends StatelessWidget {
             arguments: email,
           );
 
-          getIt<AlertService>().showAlert(
-            context: context,
-            title: LocaleKeys.success.tr(),
-            subtitle: LocaleKeys.user_registered_successfully.tr(),
-            status: AlertStatus.success,
-          );
           debugPrint('Sign Up Completed!');
         } else if (state is SignUpFormInvalid) {
           debugPrint('Form validation error');
