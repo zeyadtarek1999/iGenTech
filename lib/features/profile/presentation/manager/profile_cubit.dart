@@ -14,13 +14,11 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   final UrlLauncherService urlLauncherService;
 
-  // Controllers for the form fields
   late TextEditingController fullNameController;
   late TextEditingController emailController;
   late TextEditingController genderController;
   late TextEditingController birthDateController;
 
-  // Latitude and longitude values
   double? latitude;
   double? longitude;
 

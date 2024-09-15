@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:easy_localization/easy_localization.dart'; // Import Easy Localization
+import 'package:easy_localization/easy_localization.dart';
 import 'package:iGenTech/config/routes/app_routes.dart';
 import 'package:iGenTech/generated/locale_keys.g.dart';
 import 'package:iGenTech/shared_widgets/buttons/custom_elevator_button.dart';
@@ -44,7 +44,6 @@ class ProfileForm extends StatelessWidget {
                 ),
                 SizedBox(height: 20.h),
 
-                // Full Name Section
                 FormFieldSection(
                   label: LocaleKeys.full_name.tr(),
                   child: CustomTextFormFieldWidget(
@@ -57,7 +56,6 @@ class ProfileForm extends StatelessWidget {
                 ),
                 SizedBox(height: 20.h),
 
-                // Email Section
                 FormFieldSection(
                   label: LocaleKeys.email.tr(),
                   child: CustomTextFormFieldWidget(
@@ -70,7 +68,6 @@ class ProfileForm extends StatelessWidget {
                 ),
                 SizedBox(height: 20.h),
 
-                // Gender Section
                 FormFieldSection(
                   label: LocaleKeys.gender.tr(),
                   child: CustomTextFormFieldWidget(
@@ -83,7 +80,6 @@ class ProfileForm extends StatelessWidget {
                 ),
                 SizedBox(height: 20.h),
 
-                // Birth Date Section
                 FormFieldSection(
                   label: LocaleKeys.birth_date.tr(),
                   child: CustomTextFormFieldWidget(
@@ -96,7 +92,6 @@ class ProfileForm extends StatelessWidget {
                 ),
                 SizedBox(height: 20.h),
 
-                // Location Section
                 FormFieldSection(
                   label: LocaleKeys.location.tr(),
                   child: GestureDetector(

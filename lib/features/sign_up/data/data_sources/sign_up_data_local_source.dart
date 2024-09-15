@@ -31,8 +31,8 @@ class SignUpLocalDataSourceImpl implements SignUpLocalDataSource {
         'fullName': user.fullName,
         'gender': user.gender,
         'birthDate': user.birthDate,
-        'latitude': user.latitude,  // Added for location
-        'longitude': user.longitude, // Added for location
+        'latitude': user.latitude,
+        'longitude': user.longitude,
       });
 
       await secureCacheHelper.saveEncryptedData(
@@ -71,8 +71,8 @@ class SignUpLocalDataSourceImpl implements SignUpLocalDataSource {
         fullName: userMap['fullName'],
         gender: userMap['gender'],
         birthDate: userMap['birthDate'],
-        latitude: userMap['latitude'],  // Added for location
-        longitude: userMap['longitude'], // Added for location
+        latitude: userMap['latitude'],
+        longitude: userMap['longitude'],
       );
     } catch (e) {
       debugPrint('Error retrieving user data: $e');

@@ -27,7 +27,7 @@ class BiometricAuth {
       bool isAuthenticated = await _auth.authenticate(
         localizedReason: reason,
         options: const AuthenticationOptions(
-          biometricOnly: true, // Set to true to enforce biometric-only authentication
+          biometricOnly: true,
         ),
       );
       return isAuthenticated;

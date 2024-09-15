@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:iGenTech/core/helpers/shared_prefrences.dart'; // Assuming this is your cache helper import
-import 'package:iGenTech/core/app_constants/local_cache_keys.dart'; // Cache keys for local storage
+import 'package:iGenTech/core/helpers/shared_prefrences.dart';
+import 'package:iGenTech/core/app_constants/local_cache_keys.dart';
 
 part 'splash_state.dart';
 

@@ -14,7 +14,6 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
 
   OnBoardingCubit(this.cacheHelper) : super(OnBoardingInitial(0));
 
-  // Manually set the current page when user slides
   void setPage(int page) {
     currentPage = page;
     emit(OnBoardingPageChanged(currentPage));

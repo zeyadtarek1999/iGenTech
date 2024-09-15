@@ -146,7 +146,6 @@ class SignUpCubit extends Cubit<SignUpState> {
           );
 
           if (isAuthenticated) {
-            // Request location permission
             await permissionService.requestLocationPermission();
 
             final Position? position = await locationService.getCurrentLocation();

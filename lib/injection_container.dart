@@ -4,11 +4,7 @@ import 'package:iGenTech/core/helpers/secure_cache_helper.dart';
 import 'package:iGenTech/core/services/geo_location_service.dart';
 import 'package:iGenTech/core/services/permission_service.dart';
 import 'package:iGenTech/core/validations/bio_metric_auth.dart';
-import 'package:iGenTech/features/first_feature/data/data_sources/first_feature_remote_data_source.dart';
-import 'package:iGenTech/features/first_feature/data/repositories/first_feature_repo_impl.dart';
-import 'package:iGenTech/features/first_feature/domain/repositories/first_feature_repo.dart';
-import 'package:iGenTech/features/first_feature/domain/use_cases/first_feature_uc.dart';
-import 'package:iGenTech/features/first_feature/presentation/manager/cat_fact_cubit.dart';
+
 import 'package:get_it/get_it.dart';
 import 'package:iGenTech/features/onBoarding/presentation/manager/onboarding_cubit.dart';
 import 'package:iGenTech/features/profile/data/data_sources/profile_local_data_source.dart';
@@ -45,7 +41,6 @@ Future<void> getItInit() async {
   //! Features
 
   /// Blocs
-  getIt.registerFactory<CatFactCubit>(() => CatFactCubit(featureUc: getIt()));
   getIt.registerFactory<SplashCubit>(() => SplashCubit( getIt()));
   getIt.registerFactory<SignInCubit>(() => SignInCubit(signInUseCase: getIt() ,biometricAuth: getIt()));
   getIt.registerFactory<OnBoardingCubit>(() => OnBoardingCubit( getIt()));
@@ -53,8 +48,7 @@ Future<void> getItInit() async {
   getIt.registerFactory<SignUpCubit>(() => SignUpCubit(signUpUseCase: getIt(),checkEmailUseCase: getIt(),biometricAuth: getIt(),permissionService: getIt(),locationService: getIt() ));
 
   /// Use cases
-  getIt
-      .registerLazySingleton<FirstFeatureUc>(() => FirstFeatureUc(firstFeatureRepository: getIt()));
+
   getIt.registerLazySingleton<SignUpUseCase>(
         () => SignUpUseCaseImpl(getIt()),
   ); getIt.registerLazySingleton<SignInUseCase>(
@@ -67,8 +61,7 @@ Future<void> getItInit() async {
         () => GetProfileUseCase(getIt()),
   );
   /// Repository
-  getIt.registerLazySingleton<FirstFeatureRepository>(() =>
-      FirstFeatureRepositoryImpl(networkInfo: getIt(), firstFeatureRemoteDataSource: getIt()));
+
   getIt.registerLazySingleton<SignUpRepository>(
         () => SignUpRepositoryImpl(localDataSource: getIt()),
   );  getIt.registerLazySingleton<SignInRepository>(
@@ -77,8 +70,7 @@ Future<void> getItInit() async {
         () => ProfileRepositoryImpl( getIt()),
   );
   /// Data Sources
-  getIt.registerLazySingleton<FirstFeatureRemoteDataSource>(
-      () => FirstFeatureRemoteDataSourceImpl(client: getIt()));
+
   getIt.registerLazySingleton<SignUpLocalDataSource>(
         () =>SignUpLocalDataSourceImpl(getIt()),
   );
