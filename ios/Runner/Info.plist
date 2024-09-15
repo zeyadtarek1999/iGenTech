@@ -43,6 +43,13 @@
 
     <key>NSLocationAlwaysUsageDescription</key>
     <string>We need your location to show relevant content and features, even when the app is running in the background.</string>
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>We need your location to provide location-based features in the app.</string>
+<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+<dict>
+	<key>Purpose</key>
+	<string>We need your location for specific temporary functionality.</string>
+</dict>
 
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
