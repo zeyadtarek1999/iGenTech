@@ -62,7 +62,20 @@
   "login_error": "Login Error",
   "email_already_registered": "This email is already registered",
   "bio_auth_prompt": "Please authenticate to register",
-
+  "months": {
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December"
+  },
   "gender": "Gender",
   "location": "Location",
   "view_in_map": "View in map",
