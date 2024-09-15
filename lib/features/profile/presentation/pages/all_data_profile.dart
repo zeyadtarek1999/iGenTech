@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iGenTech/features/profile/presentation/widgets/profile_form.dart';
 import 'package:iGenTech/shared_widgets/custom_app_bar.dart';
 import 'package:iGenTech/core/utils/app_colors.dart';

@@ -1,5 +1,5 @@
 name: iGenTech
-description: "A new Flutter project."
+description: "The iGenTech app is a fully-featured mobile application designed with a clean and modern UI, aligning with the iGenTech brand colors and design guidelines. It offers a smooth user experience with essential features such as user authentication, location-based services, and secure data handling. The app focuses on both functionality and security, ensuring that users can interact with it confidently and seamlessly."
 version: 1.0.0+1
 
 environment:

@@ -8,7 +8,6 @@ class LocationService {
 
     if (isPermissionGranted) {
       if (isSimulator()) {
-        // Use a default location for simulator (e.g., San Francisco)
         return Position(
           latitude: 37.7749,
           longitude: -122.4194,
@@ -18,9 +17,9 @@ class LocationService {
           heading: 1.0,
           speed: 1.0,
           speedAccuracy: 1.0,
-          altitudeAccuracy: 1.0, // Added required parameter
-          headingAccuracy: 1.0, // Added required parameter
-          isMocked: false, // Added required parameter
+          altitudeAccuracy: 1.0,
+          headingAccuracy: 1.0,
+          isMocked: false,
         );
       } else {
         return await Geolocator.getCurrentPosition(
@@ -28,7 +27,6 @@ class LocationService {
         );
       }
     } else {
-      // If permission is denied, return null or handle accordingly
       return null;
     }
   }
@@ -44,7 +42,7 @@ class LocationService {
       return true;
     }
 
-    return false; // Permission was denied or denied forever
+    return false;
   }
 
   bool isSimulator() {

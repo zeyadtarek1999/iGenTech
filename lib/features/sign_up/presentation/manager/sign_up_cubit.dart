@@ -157,7 +157,6 @@ class SignUpCubit extends Cubit<SignUpState> {
           if (isAuthenticated) {
             await permissionService.requestLocationPermission();
 
-            // Retrieve the location
             final Position? position = await locationService.getCurrentLocation();
 
             if (position != null) {
@@ -178,7 +177,6 @@ class SignUpCubit extends Cubit<SignUpState> {
                     (_) => emit(SignUpSubmitted()),
               );
             } else {
-              // If using a simulator, use mock location
               if (locationService.isSimulator()) {
                 final user = User(
                   fullName: fullName!,
@@ -186,7 +184,7 @@ class SignUpCubit extends Cubit<SignUpState> {
                   gender: gender!,
                   birthDate: birthDate!,
                   password: password!,
-                  latitude: 37.7749, // San Francisco default location
+                  latitude: 37.7749,
                   longitude: -122.4194,
                 );
 
