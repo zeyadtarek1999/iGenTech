@@ -21,7 +21,7 @@ class LanguageSwitchButton extends StatelessWidget {
         }
       },
       child: Container(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.symmetric(vertical: 7.0.h, horizontal: 10.w),
         decoration: BoxDecoration(
           color: AppColors.secondColor,
           borderRadius: BorderRadius.circular(20.r),
@@ -32,18 +32,19 @@ class LanguageSwitchButton extends StatelessWidget {
             ),
           ],
         ),
-        child: Row(
+        child: Row(mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             SvgPicture.asset(
               Assets.icons.language,
-              width: 24,
-              height: 24,
+              width: 24.w,
+              height: 24.h,
             ),
             SizedBox(width: 8.w),
             Text(
               context.locale.languageCode == 'ar' ? 'En' : 'Ar',
-              style:  TextStyle(
+              style: TextStyle(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w600,
                 color: Colors.black,

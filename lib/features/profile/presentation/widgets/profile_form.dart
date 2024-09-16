@@ -24,22 +24,23 @@ class ProfileForm extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   cubit.fullNameController.text,
                   style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                    color: Colors.white,
+                    color: AppColors.secTextColor,
                     fontSize: 28.sp,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 SizedBox(height: 8.h),
                 Text(
                   cubit.emailController.text,
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    color: Colors.greenAccent,
+                    color: AppColors.mainTextColor,
                     fontSize: 16.sp,
+                    fontWeight: FontWeight.w500
                   ),
                 ),
                 SizedBox(height: 20.h),
