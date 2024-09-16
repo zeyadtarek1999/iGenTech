@@ -26,38 +26,38 @@ class ProfileInfoCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10.r),
               ),
               child: Row(
+                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        state.profile.fullName,
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          state.profile.fullName,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineLarge!
+                              .copyWith(
+                                color: AppColors.secTextColor,
+                                fontWeight: FontWeight.w800,
+                              ),
+                          overflow: TextOverflow.visible,
                         ),
-                      ),
-                      SizedBox(height: 8.h),
-                      Text(
-                        state.profile.email,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
+                        SizedBox(height: 8.h),
+                        Text(
+                          state.profile.email,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineMedium!
+                              .copyWith(
+                                color: AppColors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                          overflow: TextOverflow.visible,
                         ),
-                      ),
-                    ],
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.edit,
-                      color: AppColors.secondColor,
+                      ],
                     ),
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, AppRoutes.userProfileScreenRoute);
-                    },
                   ),
                 ],
               ),

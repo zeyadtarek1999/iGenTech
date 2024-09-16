@@ -15,7 +15,7 @@ class SignInRepositoryImpl implements SignInRepository {
       final bool isAuthenticated = await localDataSource.authenticateUser(authEntity);
 
       if (isAuthenticated) {
-        return Right(true);
+        return const Right(true);
       } else {
         return Left(CacheFailure('Invalid email or password'));
       }
