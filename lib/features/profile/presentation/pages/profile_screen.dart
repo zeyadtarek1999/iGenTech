@@ -25,22 +25,24 @@ class ProfileScreen extends StatelessWidget {
       appBar: const CustomAppBar(showTitle: false, showBackButton: false),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              LocaleKeys.profile.tr(),
-              style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                fontSize: 40.sp,
-                color: AppColors.secTextColor,
-                fontWeight: FontWeight.w700,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                LocaleKeys.profile.tr(),
+                style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                  fontSize: 40.sp,
+                  color: AppColors.secTextColor,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
-            ),
-            SizedBox(height: 20.h),
-            const ProfileInfoCard(),
-            SizedBox(height: 20.h),
-            const MenuItemsSection(),
-          ],
+              SizedBox(height: 20.h),
+              const ProfileInfoCard(),
+              SizedBox(height: 20.h),
+              const MenuItemsSection(),
+            ],
+          ),
         ),
       ),
     );
